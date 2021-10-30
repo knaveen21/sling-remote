@@ -1,0 +1,232 @@
+body{
+  background-color: #FFF5FD
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.nav .nav-item .nav-link{
+  font-size: 25px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.side-text{
+  margin-top:3em;
+  margin-left: 3em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  line-height: 1.5;
+}
+.container
+{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  padding: 40px 0;
+}
+.container .card
+{
+  position: relative;
+  width:50px;
+  height: 40px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
+              inset -5px -spx 5px rgba(255,255,255, 0.5),
+              5px 5px 5px rgba(0, 0, 0, 0.05),
+              -5px -5px -5px rgba(255, 255, 255, 0.5);
+
+  border-radius: 3px;
+  margin: 30px;
+}
+.container .card .box
+{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right:20px;
+  bottom: 20px;
+  background: #ebf5fc;
+  box-shadow: 0 12x 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+.container .card:hover .box{
+  /* transform: translateY(-50px); */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45dmg,#b95ce4,#4f29cd);
+}
+
+
+.container .card .box .content h1{
+  margin-left: 20px;
+}
+.container .card .box .content a{
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  background: #03a9f4;
+  margin-top: 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 40;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.container .card:hover .box .content a{
+  background: #ff568f;
+}
+
+
+.container2
+{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  padding: 40px 0;
+}
+.container2 .card2
+{
+  position: relative;
+  width:330px;
+  height: 650px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
+              inset -5px -spx 5px rgba(255,255,255, 0.5),
+              5px 5px 5px rgba(0, 0, 0, 0.05),
+              -5px -5px -5px rgba(255, 255, 255, 0.5);
+
+  border-radius: 13px;
+  margin: 30px;
+}
+.container2 .card2 .box2
+{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right:20px;
+  bottom: 20px;
+  background: #ebf5fc;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  transition: 0.5s;
+}
+.container2 .card2:hover .box2{
+  /* transform: translateY(-50px); */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45dmg,#b95ce4,#4f29cd);
+}
+.container2 .card2 .box2 .content2  {
+  margin-top: 5px;
+  padding: 10px;
+}
+
+button{
+  width:100px;
+  height:45px;
+  margin-bottom: 5px;
+}
+#buttonh{
+  position: relative;
+  display: inline-block;
+
+  background: #03a9f4;
+  margin-top: 15px;
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+#buttonh:hover{
+  background: #ff568f;
+}
+#buttonKeydiv{
+  margin-left: 90px;
+  margin-top:10px;
+}
+#buttonKeydiv2{
+  margin-left:90px;
+  margin-top:5px;
+}
+
+#buttonkey{
+  width:50px;
+  position: relative;
+  display: inline-block;
+
+  background: #03a9f4;
+  margin-top: 15px;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  height: 60px;
+}
+#buttonkey:hover{
+  background: #ff568f;
+}
+#buttonkeyl{
+  width:80px;
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  background: #03a9f4;
+  margin-top: 15px;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  margin-left:10px;
+}
+#buttonkeyl:hover{
+    background: #ff568f;
+}
+#buttonkeyr:hover{
+    background: #ff568f;
+}
+#buttonkeyr{
+  width:80px;
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  background: #03a9f4;
+  margin-top: 15px;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  margin-left:15px;
+}
+#up{
+  width:24px;
+  height: 24px
+}
+#listening{
+  margin-left: 3.8em;
+  animation:animate 3s steps(15);
+  overflow: hidden;
+  white-space: nowrap;
+  width:15ch;
+}
+@keyframes animate {
+  onclick,0%{
+    width:0ch;
+  }
+  onclick ,100%{
+    width:100ch;
+  }
+}
+.tv{
+  height:15em;
+  width:100%;
+  background-color: #022E57;
+}
