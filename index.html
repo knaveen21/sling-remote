@@ -1,84 +1,165 @@
-<!doctype html>
-	<head>
-		<style>
-			/* CSS comes here */
-			body {
-			    font-family: arial;
-			}
-			button {
-			    padding:10px;
-			    background-color:#6a67ce;
-			    color: #FFFFFF;
-			    border: 0px;
-			    cursor:pointer;
-			    border-radius: 5px;
-			}
-			#output {
-			    background-color:#F9F9F9;
-			    padding:10px;
-			    width: 100%;
-			    margin-top:20px;
-			    line-height:30px;
-			}
-			.hide {
-			    display:none;
-			}
-			.show {
-			    display:block;
-			}
-		</style>
-		<title>JavaScript Speech to Text</title>
-	</head>
-	<body>
-		<h2>Sling</h2>
-        <p>Click on the below button and speak something...</p>
-        <p><button type="button" onclick="runSpeechRecognition()">Speech to Text</button> &nbsp; <span id="action"></span></p>
-        <div id="output" class="hide"></div>
-		<script>
-			/* JS comes here */
-		    function runSpeechRecognition() {
-		        // get output div reference
-		        var output = document.getElementById("output");
-		        // get action element reference
-		        var action = document.getElementById("action");
-                // new speech recognition object
-                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-                var recognition = new SpeechRecognition();
-            
-                // This runs when the speech recognition service starts
-                recognition.onstart = function() {
-                    action.innerHTML = "<small>listening, please speak...</small>";
-                };
-                
-                recognition.onspeechend = function() {
-                    action.innerHTML = "<small>stopped listening, hope you are done...</small>";
-                    recognition.stop();
-                }
-              
-                // This runs when the speech recognition service returns result
-                recognition.onresult = function(event) {
-                    var transcript = event.results[0][0].transcript;
-                    var confidence = event.results[0][0].confidence;
-                    loadXMLDoc(transcript);
-                    output.innerHTML = "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
-                    output.classList.remove("hide");
-                };
-              
-                 // start recognition
-                 recognition.start();
-	        }
-	        
-	        function loadXMLDoc(transcript) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML =
-      this.responseText;
-    }
-  };
-  xhttp.open("POST", "http://192.168.31.240:8060/input?contentId="+transcript, true);
-  xhttp.send();
-}
-		</script>
-	</body>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>POC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+  </head>
+  <body>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="row">
+      <div class="container2">
+        <div class="card2">
+          <div class="box2">
+            <div class="content2">
+              <div class="row">
+                <div class="col-sm-6">
+                  <button id="buttonh"type="button" class="btn btn-primary" onclick="handleTabNavigation('home')">Home</button>
+                </div>
+                <div class="col-sm-6">
+                <button id="buttonh"type="button" class="btn btn-primary" onclick="handleTabNavigation('grid_guide')">Guide</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <button id="buttonh"type="button" class="btn btn-primary" onclick="handleTabNavigation('dvr')">DVR</button>
+                </div>
+                <div class="col-sm-6">
+                <button id="buttonh" type="button" class="btn btn-primary" onclick="handleTabNavigation('ondemand')">OnDemand</button>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="container">
+                  <div class="card">
+                    <div class="box">
+                      <div class="content">
+                        <a href="#"><img style="width: 40px; height: 70px;" src="images/icons8-mike-256.png" onclick="runSpeechRecognition()"alt=""></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div id="buttonKeydiv"class="col-sm-12">
+                  <button id="buttonkey"type="button" class="btn btn-primary" onclick="handleKeyNavigation('up')"><img id="up"src="images/icons8-thick-arrow-pointing-up-48.png" alt=""></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <button id="buttonkeyl"type="button" class="btn btn-primary" onclick="handleKeyNavigation('left')"><img id="up"src="images/icons8-arrow-pointing-left-48.png" alt=""></button>
+                </div>
+                <div class="col-sm-6">
+                  <button id="buttonkeyr"type="button" class="btn btn-primary" onclick="handleKeyNavigation('right')"><img id="up"src="images/icons8-arrow-48.png" alt=""></button>
+                </div>
+              </div>
+              <div class="row">
+                <div id="buttonKeydiv2"class="col-sm-12">
+                  <button id="buttonkey"type="button" class="btn btn-primary" onclick="handleKeyNavigation('down')"><img id="up"src="images/icons8-thick-arrow-pointing-down-48.png" alt=""></button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="speak"class="container">
+    <div class="row">
+      <div class="col-lg-6">
+          <h1 id="listening"></h1>
+      </div>
+      <div class="col-lg-6">
+      </div>
+    </div>
+
+  </div>
+
+</div>
+  <div class="tv">
+    </div>
+  <script>
+    /* JS comes here */
+      function runSpeechRecognition() {
+          // get output div reference
+          var output = document.getElementById("listening");
+          // get action element reference
+          var action = document.getElementById("action");
+              // new speech recognition object
+              var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+              var recognition = new SpeechRecognition();
+
+              // This runs when the speech recognition service starts
+              recognition.onstart = function() {
+                console.log("listening");
+                output.innerHTML = "Listening...";
+              };
+
+              recognition.onspeechend = function() {
+                console.log("stopped listening");
+                  recognition.stop();
+              }
+              // This runs when the speech recognition service returns result
+              recognition.onresult = function(event) {
+                  var transcript = event.results[0][0].transcript;
+                  var confidence = event.results[0][0].confidence;
+                  console.log(transcript);
+
+                  output.innerHTML = transcript;
+                  loadXMLDoc(transcript);
+
+              };
+
+               // start recognition
+               recognition.start();
+        }
+
+        function loadXMLDoc(transcript) {
+          console.log(transcript);
+         var xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+               document.getElementById("demo").innerHTML =
+               this.responseText;
+             }
+        };
+        xhttp.open("POST", "http://192.168.31.240:8060/input?contentId=search/?search_term="+transcript, true);
+        xhttp.send();
+      }
+
+      function handleKeyNavigation(transcript) {
+          console.log(transcript);
+         var xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+               document.getElementById("demo").innerHTML =
+               this.responseText;
+             }
+        };
+        xhttp.open("POST", "http://192.168.31.240:8060/input?contentId=search/?search_term="+transcript, true);
+        xhttp.send();
+      }
+
+      function handleTabNavigation(transcript) {
+          console.log(transcript);
+         var xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+               document.getElementById("demo").innerHTML =
+               this.responseText;
+             }
+        };
+        xhttp.open("POST", "http://192.168.31.240:8060/input?contentId="+transcript, true);
+        xhttp.send();
+      }
+  </script>
+
+  </body>
 </html>
